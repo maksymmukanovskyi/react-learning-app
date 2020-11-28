@@ -1,25 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import Product from "./Product"
+import Specifications from "./Specifications"
+const App = () => (
+  <Product 
+  imgUrl="http://placeimg.com/640/480/any"
+  alt="any picture"
+  price="150$"
+  name="Atlant"
+  text="hey check this out man">
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+<Specifications
+  name="architecture"
+  discount="50%"
+  unreadMessages="Tanya"
+  isLoggedIn= {false}
+/>
+  </Product>
+);
 
 export default App;
+
