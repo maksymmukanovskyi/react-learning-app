@@ -1,13 +1,31 @@
-import Product from "./Product"
-const App = () => (
-  <Product 
-  imgUrl="http://placeimg.com/640/480/any"
-  alt="any picture"
-  price="150$"
-  name="Atlant"
-  text="hey check this out man">
-  </Product>
-);
+import React, {Component} from 'react';
+export default class App extends Component{
+  static defaultProps = {
+    step: 1,
+    initValue: 55,
+  };
 
-export default App;
+  state = {
+    value: this.props.initValue,
+  }
 
+  handleIncrement = () => {
+    this.setState((prevState, props) => ({
+      value: prevState.value + props.step,
+    }))
+  }
+
+  handleDecriment = () => {
+    this.setState((prevstate, props) => ({
+      value: prevstate.value - props.step,
+    }))
+  }
+
+  render() {
+    const {value} = this.state;
+    const {step} = this.props;
+
+    
+  }
+
+}
