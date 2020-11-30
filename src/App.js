@@ -25,6 +25,13 @@ export default class App extends Component{
     const {value} = this.state;
     const {step} = this.props;
 
+    return(
+      <div>
+        <span>{value}</span>
+        <button onClick={this.handleIncrement}> Increment by {step} </button>
+        <button onClick={this.handleDecriment}> Decriment by {step} </button>
+      </div>
+    )
     
   }
 
