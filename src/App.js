@@ -1,13 +1,45 @@
-import Product from "./Product"
-const App = () => (
-  <Product 
-  imgUrl="http://placeimg.com/640/480/any"
-  alt="any picture"
-  price="150$"
-  name="Atlant"
-  text="hey check this out man">
-  </Product>
-);
+import React, {Component} from 'react';
+import NoteList from './NoteList';
+import NoteEditor from './NoteEditor';
+import v4 from 'uuid/dist/v4';
+import NoteFilter from './NoteFilter';
 
-export default App;
+const filterNotes = (notes, filter) => 
+notes.filter(note => note.text.toLowerCase().includes(filter.toLowerCase()));
 
+export default class App extends Component{
+    state = {
+        notes: [],
+        filter: '',
+    }
+    handleFilterChange = e => {
+        this.setState({
+            filter: e.target.value
+        })
+    }
+
+    handleAddNote = text => {
+        this.setState((prevState) => ({
+            notes: [{id: v4(), text}, ...prevState.notes]
+        }))
+    }
+
+    handleDeleteNote = id => {
+        this.setState((prevState) => ({
+            notes: prevState.notes.filter(note => note.id !== id),
+        }))
+    }
+
+    render() {
+        const {notes, filter} = this.state;
+        const filteredNotes = filterNotes(notes, filter);
+        return(
+        <div>
+            <h1>Forms in React</h1>
+            <NoteList notes={filteredNotes} onDeleteNote={this.handleDeleteNote}/>
+            <NoteFilter filter={filter} onFilterChange={this.handleFilterChange}/>
+            <NoteEditor onSubmit={this.handleAddNote}/>
+        </div>
+        )
+    }
+}
