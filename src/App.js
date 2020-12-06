@@ -1,13 +1,18 @@
-import Product from "./Product"
-const App = () => (
-  <Product 
-  imgUrl="http://placeimg.com/640/480/any"
-  alt="any picture"
-  price="150$"
-  name="Atlant"
-  text="hey check this out man">
-  </Product>
-);
+import React, { Component } from 'react';
+import SignUpForm from './SignUpForm';
+ export default class App extends Component{
+     state = {
+         value: '',
+     };
 
-export default App;
+
+    render(){
+        return <SignUpForm/>
+        
+    }
+ }
+
+ 
+
+
 
